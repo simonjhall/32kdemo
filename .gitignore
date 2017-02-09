@@ -7,3 +7,10 @@
 /game/Debug
 /game/game.VC.VC.opendb
 /game/game.VC.db
+*.tlog
+*.obj
+*.log
+*.exe
+*.ipdb
+*.pdb
+*.iobj
