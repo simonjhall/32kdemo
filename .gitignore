@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/game/game/Debug
+/game/.vs/game/v14/.suo
+/game/Debug
+/game/game.VC.VC.opendb
+/game/game.VC.db
