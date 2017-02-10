@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\daddy">
+      <UniqueIdentifier>{0d3212cf-d925-476e-8df0-347f27babbc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\easy">
+      <UniqueIdentifier>{a858ec83-a9a0-45ee-aa4d-c7039b4aa558}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\win32">
+      <UniqueIdentifier>{4488275a-ac05-43c1-9a4b-f5f968ef65bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -24,6 +33,15 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="screen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -31,6 +49,18 @@
     </ClCompile>
     <ClCompile Include="game.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="win32\screen.cpp">
+      <Filter>Source Files\win32</Filter>
+    </ClCompile>
+    <ClCompile Include="easy\screen.cpp">
+      <Filter>Source Files\easy</Filter>
+    </ClCompile>
+    <ClCompile Include="daddy\screen.cpp">
+      <Filter>Source Files\daddy</Filter>
+    </ClCompile>
+    <ClCompile Include="daddy\ipc.cpp">
+      <Filter>Source Files\daddy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
