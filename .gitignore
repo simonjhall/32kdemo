@@ -14,3 +14,8 @@
 *.ipdb
 *.pdb
 *.iobj
+*.ilk
+*.elf
+*.idb
+*.L68
+*.S68
