@@ -150,12 +150,16 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
+    <ClInclude Include="MiniGame.h" />
+    <ClInclude Include="PacmanGame.h" />
     <ClInclude Include="pad.h" />
     <ClInclude Include="screen.h" />
+    <ClInclude Include="ScreenDemo.h" />
     <ClInclude Include="small_font.h" />
     <ClInclude Include="small_font_0.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="text.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="daddy\ipc.cpp">
@@ -177,7 +181,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="MiniGame.cpp" />
+    <ClCompile Include="PacmanGame.cpp" />
+    <ClCompile Include="ScreenDemo.cpp" />
+    <ClCompile Include="screen_shared.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="text.cpp" />
     <ClCompile Include="win32\screen.cpp" />
   </ItemGroup>
   <ItemGroup>

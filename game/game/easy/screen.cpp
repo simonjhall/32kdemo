@@ -48,14 +48,13 @@ void clear_screen(int col)
 
 unsigned char read_pad(unsigned int id)		//todo 2nd pad and B/C buttons
 {
-	//I am having no joy with this
-#if 0
-	unsigned char ret;
+	unsigned char ret = 0;
 	unsigned long k;
 	__asm__ __volatile__
 		(
+			"clr %%d0\n\t"
 			"move.b #19, %%d0\n\t"
-			"move.l #('A' << 24), %%d1\n\t"
+			"move.l #('A'<<24)+('D'<<16)+('W'<<8)+'S', %%d1\n\t"
 			"trap #15\n\t"
 
 			"move.l %%d1, %0\n\t"
@@ -64,31 +63,15 @@ unsigned char read_pad(unsigned int id)		//todo 2nd pad and B/C buttons
 		: /*inputs*/
 		: "d0", "d1"
 		);
-/*
-#define VK_ESCAPE         0x1B
-#define VK_LEFT           0x25
-#define VK_UP             0x26
-#define VK_RIGHT          0x27
-#define VK_DOWN           0x28
 
-	switch (k)
-	{
-		case VK_LEFT:
-			ret |= PAD_LEFT_SH;
-			break;
-		case VK_RIGHT:
-			ret |= PAD_RIGHT_SH;
-			break;
-		case VK_UP:
-			ret |= PAD_UP_SH;
-			break;
-		case VK_DOWN:
-			ret |= PAD_DOWN_SH;
-			break;
-		default:
-			break;
-	}*/
+	if (k & 0xff000000UL)
+		ret |= PAD_LEFT_SH;
+	if (k & 0x00ff0000UL)
+		ret |= PAD_RIGHT_SH;
+	if (k & 0x0000ff00UL)
+		ret |= PAD_UP_SH;
+	if (k & 0x000000ffUL)
+		ret |= PAD_DOWN_SH;
 
 	return ret;
-#endif
 }
