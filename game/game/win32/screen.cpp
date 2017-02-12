@@ -61,6 +61,12 @@ void plot_pixel(short x, short y, short col)
 	s_consoleBuffer[(SCREEN_WIDTH * s_scaleFactorX) * y + x].Attributes = col ? (BACKGROUND_BLUE | BACKGROUND_GREEN | BACKGROUND_RED | BACKGROUND_INTENSITY) : 0;
 }
 
+void plot_packed_pixel(short x, short y, int col)
+{
+	for (int count = 0; count < 8; count++)
+		plot_pixel(x + count, y, (col >> (7 - count)) & 1);
+}
+
 void paint_screen(void)
 {
 	COORD bufferSize = { s_scaleFactorX * SCREEN_WIDTH, s_scaleFactorY * SCREEN_HEIGHT };

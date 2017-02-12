@@ -106,7 +106,7 @@ unsigned short g_numChars;
 const unsigned char *g_pFirstPixel;
 unsigned char g_charMapping[256];
 
-unsigned char get_font_pixel(unsigned short x, unsigned short y)
+inline unsigned char get_font_pixel(unsigned short x, unsigned short y)
 {
 	unsigned char p = g_pFirstPixel[y * (256 >> 3) + (x >> 3)];
 	//for some reason the pixels are inverted in the image
@@ -114,20 +114,33 @@ unsigned char get_font_pixel(unsigned short x, unsigned short y)
 	return (p >> (7 - (x & 7))) & 1;
 }
 
+inline unsigned char get_font_pixel_packed(unsigned short x, unsigned short y)
+{
+	unsigned char p = g_pFirstPixel[y * (256 >> 3) + (x >> 3)];
+	//for some reason the pixels are inverted in the image
+	p = ~p;
+	return p;
+}
+
 void build_char_mapping(void)
 {
 	for (unsigned short outer = 0; outer < 256; outer++)
 	{
 		for (unsigned short inner = 0; inner < g_numChars; inner++)
+		{
+			ASSERT((g_pChars->m_char[inner].width[0] & 7) == 0);
+			ASSERT((g_pChars->m_char[inner].x[0] & 7) == 0);
+
 			if (g_pChars->m_char[inner].id[0] == outer)
 			{
 				g_charMapping[outer] = (unsigned char)inner;
 				break;
 			}
+		}
 	}
 }
 
-short draw_character(short x_pos, short y_pos, unsigned char c)
+short draw_character_slow(short x_pos, short y_pos, unsigned char c)
 {
 	//find the character
 	unsigned short found = g_charMapping[c];
@@ -140,10 +153,26 @@ short draw_character(short x_pos, short y_pos, unsigned char c)
 	return g_pChars->m_char[found].xadvance[0];
 }
 
+short draw_character_8wide(short x_pos, short y_pos, unsigned char c)
+{
+	ASSERT((x_pos & 7) == 0);
+
+	//find the character
+	unsigned short found = g_charMapping[c];
+
+	for (unsigned short y = 0; y < g_pChars->m_char[found].height[0]; y++)
+	{
+		unsigned char p = get_font_pixel_packed(g_pChars->m_char[found].x[0], y + g_pChars->m_char[found].y[0]);
+		plot_packed_pixel(x_pos + g_pChars->m_char[found].xoffset[0], y_pos + y + g_pChars->m_char[found].yoffset[0], p);
+	}
+
+	return g_pChars->m_char[found].xadvance[0];
+}
+
 void draw_string(short x_pos, short y_pos, const char *pString, short length)
 {
 	for (short count = 0; count < length; count++)
-		x_pos += draw_character(x_pos, y_pos, pString[count]);
+		x_pos += draw_character_8wide(x_pos, y_pos, pString[count]);
 }
 
 int main(void)
@@ -174,7 +203,7 @@ int main(void)
 	clear_screen(0);
 
 	//draw_character(50, 50, 'A');
-	draw_string(50, 50, "the legend is true", 18);
+	draw_string(48, 48, "the legend is true", 18);
 	paint_screen();
 
 	while (1);

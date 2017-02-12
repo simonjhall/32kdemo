@@ -29,6 +29,12 @@ void plot_pixel(short x, short y, short col)
 		);
 }
 
+void plot_packed_pixel(short x, short y, int col)
+{
+	for (int count = 0; count < 8; count++)
+		plot_pixel(x + count, y, (col >> (7 - count)) & 1);
+}
+
 void paint_screen(void)
 {
 }
