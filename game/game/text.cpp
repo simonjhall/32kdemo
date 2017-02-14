@@ -168,17 +168,83 @@ static short clear_character_8wide(short x_pos, short y_pos, unsigned char c)
 	return g_pChars->m_char[found].xadvance[0];
 }
 
-void draw_string(short x_pos, short y_pos, const char *pString, short length)
+short draw_string(short x_pos, short y_pos, const char *pString, short length)
 {
 	for (short count = 0; count < length; count++)
 		x_pos += draw_character_8wide(x_pos, y_pos, pString[count]);
+
+	return x_pos;
 }
 
-void clear_string(short x_pos, short y_pos, const char *pString, short length)
+short clear_string(short x_pos, short y_pos, const char *pString, short length)
 {
 	for (short count = 0; count < length; count++)
 		x_pos += clear_character_8wide(x_pos, y_pos, pString[count]);
+
+	return x_pos;
 }
+
+short draw_hex_number(short x_pos, short y_pos, unsigned long num)
+{
+	for (int count = 3; count >= 0; count--)
+	{
+		unsigned char b = (num >> (count * 8)) & 0xff;
+
+		unsigned char upper = b >> 4;
+		unsigned char lower = b & 0xf;
+
+		char c;
+		if (upper < 10)
+			c = upper + '0';
+		else
+			c = upper + 'a' - 10;
+
+		x_pos = draw_string(x_pos, y_pos, &c, 1);
+
+		if (lower < 10)
+			c = lower + '0';
+		else
+			c = lower + 'a' - 10;
+
+		x_pos = draw_string(x_pos, y_pos, &c, 1);
+	}
+
+	return x_pos;
+}
+
+short draw_hex_number(short x_pos, short y_pos, unsigned short num)
+{
+	for (int count = 1; count >= 0; count--)
+	{
+		unsigned char b = (num >> (count * 8)) & 0xff;
+
+		unsigned char upper = b >> 4;
+		unsigned char lower = b & 0xf;
+
+		char c;
+		if (upper < 10)
+			c = upper + '0';
+		else
+			c = upper + 'a' - 10;
+
+		x_pos = draw_string(x_pos, y_pos, &c, 1);
+
+		if (lower < 10)
+			c = lower + '0';
+		else
+			c = lower + 'a' - 10;
+
+		x_pos = draw_string(x_pos, y_pos, &c, 1);
+	}
+
+	return x_pos;
+}
+
+short get_line_height(void)
+{
+	return g_pCommon->lineHeight[0];
+}
+
 
 void font_init(void)
 {
