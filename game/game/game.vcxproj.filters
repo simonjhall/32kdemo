@@ -22,6 +22,12 @@
     <Filter Include="Source Files\win32">
       <UniqueIdentifier>{4488275a-ac05-43c1-9a4b-f5f968ef65bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="debugger">
+      <UniqueIdentifier>{5ed50c6a-c27f-44ae-98a2-ceb5afb27b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\debugger">
+      <UniqueIdentifier>{fa8b0d03-b44a-4e0b-913f-6167f307cb3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -60,6 +66,9 @@
     <ClInclude Include="ScreenDemo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="debugger\debugger.h">
+      <Filter>debugger</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -94,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="screen_shared.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="debugger\debugger.cpp">
+      <Filter>Source Files\debugger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

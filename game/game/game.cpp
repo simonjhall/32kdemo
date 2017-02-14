@@ -5,6 +5,8 @@
 #include "stdafx.h"
 #endif
 
+#include "debugger/debugger.h"
+
 #include "screen.h"
 #include "pad.h"
 #include "text.h"
@@ -16,6 +18,8 @@
 
 int main(void)
 {
+	install_debugger();
+
 	font_init();
 
 	screen_init();
@@ -58,6 +62,17 @@ extern "C" void vblank(void)
 extern "C" void _start(void) __attribute__((noreturn));
 extern "C" void _start(void)
 {
+#ifdef __m68k__
+	__asm__ __volatile__
+	(
+		"move.w #0, %%sr\n\t"
+		//"suba.l #1024, %%sp\n\t"
+		: /*outputs*/
+		: /*inputs*/
+		: /*clobbers*/
+		);
+#endif
+
 	main();
 	while (1);
 }

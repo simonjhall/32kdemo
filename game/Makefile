@@ -3,7 +3,7 @@ CPPFLAGS_DADDY = -D__DADDY__=1
 CPPFLAGS_EASY = -D=__EASY__
 
 HEADERS = game/small_font_0.h game/small_font.h game/screen.h game/common.h game/common.h game/MiniGame.h game/PacmanGame.cpp game/ScreenDemo.h
-SOURCES = game/game.cpp game/text.cpp game/MiniGame.cpp game/PacmanGame.cpp game/ScreenDemo.cpp game/screen_shared.cpp
+SOURCES = game/game.cpp game/text.cpp game/MiniGame.cpp game/PacmanGame.cpp game/ScreenDemo.cpp game/screen_shared.cpp game/debugger/debugger.cpp
 SOURCES_EASY = game/easy/screen.cpp
 SOURCES_DADDY = game/daddy/screen.cpp game/daddy/ipc.cpp
 
