@@ -10,6 +10,12 @@ void plot_pixel(short x, short y, short col)
 {
 	unsigned int white = col ? 0xffffff : 0;			//bgr
 
+	if (x <= 0 || y <= 0)
+		return;
+
+	if (x >= SCREEN_WIDTH || y >= SCREEN_HEIGHT)
+		return;
+
 	__asm__ __volatile__
 		(
 			//pen colour

@@ -83,8 +83,13 @@ static const char vert_bar[8]
 	(const char)0b10000001,
 };
 
+int c;
 static void render_tile(short x, short y)
 {
+	//c = *(int *)1;
+	/*volatile int a = 0, b = 0;
+	c = a / b;*/
+	//asm("bkpt #0");
 	ASSERT(x >= 0 && x < 28);
 	ASSERT(y >= 0 && y < 36);
 
@@ -124,6 +129,7 @@ bool get_tile(short x, short y, char &r)
 		return false;
 
 	r = maze[y * 28 + x];
+
 	return true;
 }
 

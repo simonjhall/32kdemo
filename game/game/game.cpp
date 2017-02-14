@@ -16,7 +16,6 @@
 #include "PacmanGame.h"
 #include "ScreenDemo.h"
 
-int c;
 int main(void)
 {
 	install_debugger();
@@ -27,9 +26,7 @@ int main(void)
 
 	clear_screen(0);
 
-	volatile long a = 0;
-	volatile int b = 0;
-	c = a / b;
+	
 
 	PacmanGame pacman;
 	ScreenDemo screen;
