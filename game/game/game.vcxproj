@@ -150,7 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common.h" />
+    <ClInclude Include="Cube.h" />
     <ClInclude Include="debugger\debugger.h" />
+    <ClInclude Include="fixed_point.h" />
     <ClInclude Include="MiniGame.h" />
     <ClInclude Include="PacmanGame.h" />
     <ClInclude Include="pad.h" />
@@ -160,9 +162,11 @@
     <ClInclude Include="small_font_0.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Test3D.h" />
     <ClInclude Include="text.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Cube.cpp" />
     <ClCompile Include="daddy\ipc.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
@@ -193,6 +197,7 @@
     <ClCompile Include="ScreenDemo.cpp" />
     <ClCompile Include="screen_shared.cpp" />
     <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Test3D.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="win32\screen.cpp" />
   </ItemGroup>

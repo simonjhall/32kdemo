@@ -15,6 +15,7 @@
 #include "MiniGame.h"
 #include "PacmanGame.h"
 #include "ScreenDemo.h"
+#include "Test3D.h"
 
 int main(void)
 {
@@ -26,12 +27,11 @@ int main(void)
 
 	clear_screen(0);
 
-	
-
 	PacmanGame pacman;
 	ScreenDemo screen;
+	Test3D threedee;
 
-	MiniGame *pGame = &pacman;
+	MiniGame *pGame = &threedee;
 
 	unsigned long frame_count = 0;
 

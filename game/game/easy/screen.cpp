@@ -8,13 +8,14 @@ void screen_init(void)
 
 void plot_pixel(short x, short y, short col)
 {
-	unsigned int white = col ? 0xffffff : 0;			//bgr
+	//unsigned int white = col ? 0xffffff : 0;			//bgr
+	unsigned int white = (0 - (unsigned int)col) & 0xffffff;
 
-	if (x <= 0 || y <= 0)
+	/*if (x <= 0 || y <= 0)
 		return;
 
 	if (x >= SCREEN_WIDTH || y >= SCREEN_HEIGHT)
-		return;
+		return;*/
 
 	__asm__ __volatile__
 		(

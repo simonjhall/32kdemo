@@ -12,6 +12,7 @@ exception_save:
 
 .global _addr_error
 _addr_error:
+	/*addq.l #8, %a7*/
 	/* a0, a1 */
 	move.l %a0, exception_save
 	move.l %a1, exception_save+4

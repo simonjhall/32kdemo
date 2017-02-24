@@ -69,6 +69,15 @@
     <ClInclude Include="debugger\debugger.h">
       <Filter>debugger</Filter>
     </ClInclude>
+    <ClInclude Include="fixed_point.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Test3D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cube.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -106,6 +115,12 @@
     </ClCompile>
     <ClCompile Include="debugger\debugger.cpp">
       <Filter>Source Files\debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="Test3D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cube.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
